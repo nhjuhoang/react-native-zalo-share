@@ -42,19 +42,19 @@ public class ZaloShareModule extends ReactContextBaseJavaModule  {
         }
     }
 
-    private void openStore() {
-        try {
-            this.getCurrentActivity().startActivity(
-                    new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("market://details?id=" + zaloPackageName))
-            );
-        } catch (android.content.ActivityNotFoundException anfe) {
-            this.getCurrentActivity().startActivity(
-                    new Intent(Intent.ACTION_VIEW,
-                            Uri.parse("https://play.google.com/store/apps/details?id=" + zaloPackageName))
-            );
-        }
-    }
+//    private void openStore() {
+//        try {
+//            this.getCurrentActivity().startActivity(
+//                    new Intent(Intent.ACTION_VIEW,
+//                            Uri.parse("market://details?id=" + zaloPackageName))
+//            );
+//        } catch (android.content.ActivityNotFoundException anfe) {
+//            this.getCurrentActivity().startActivity(
+//                    new Intent(Intent.ACTION_VIEW,
+//                            Uri.parse("https://play.google.com/store/apps/details?id=" + zaloPackageName))
+//            );
+//        }
+//    }
 
     private FeedData getFeedData(ReadableMap config) {
         String msg = config.getString("msg");
@@ -82,8 +82,12 @@ public class ZaloShareModule extends ReactContextBaseJavaModule  {
                 FeedData feed = this.getFeedData(config);
                 ZaloPluginCallback mcalCallback = new ZaloPluginCallback() {
                     @Override
-                    public void onResult(boolean z, int i, String str, String str2) {
-                        promise.resolve(null);
+                    public void onResult(boolean success, int i, String str, String str2) {
+                        if(success) {
+                            promise.resolve("success");
+                        } else {
+                            promise.reject("app_not_share", "app_not_share");
+                        }
                     }
                 };
 
@@ -96,10 +100,11 @@ public class ZaloShareModule extends ReactContextBaseJavaModule  {
 
                 promise.resolve(null);
             } catch (Exception e) {
-                Log.d( TAG, String.valueOf(e.getMessage()));
                 promise.reject(e.getMessage());
             }
-        } else { this.openStore(); }
+        } else {
+            promise.reject("app_not_install", "app_not_install");
+        }
     }
 
     @ReactMethod
@@ -112,23 +117,29 @@ public class ZaloShareModule extends ReactContextBaseJavaModule  {
 
                 ZaloPluginCallback mcalCallback = new ZaloPluginCallback() {
                     @Override
-                    public void onResult(boolean z, int i, String str, String str2) {
-                        promise.resolve(null);
+                    public void onResult(boolean success, int i, String str, String str2) {
+                        if(success) {
+                            promise.resolve("success");
+                        } else {
+                            promise.reject("app_not_share", "app_not_share");
+                        }
                     }
                 };
 
                 OpenAPIService.getInstance().shareFeed(
                         this.getCurrentActivity(),
                         feed,
-                        mcalCallback
+                        mcalCallback,
+                        true
                 );
 
                 promise.resolve(null);
             } catch (Exception e) {
-                Log.d( TAG, String.valueOf(e.getMessage()));
                 promise.reject(e.getMessage());
             }
-        } else { this.openStore(); }
+        } else {
+            promise.reject("app_not_install", "app_not_install");
+        }
     }
 
 }

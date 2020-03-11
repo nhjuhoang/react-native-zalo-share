@@ -7,25 +7,18 @@ const { ZaloShare } = NativeModules;
 type configType = {
   msg: string,
   link: string,
-  title: string,
-  source: string,
+  linkTitle: string,
+  linkSource: string,
   linkThumb: string,
+  appName?: string, // app name back ios app when cancel share
 }
 
-const shareMessage = (config: configType) => {
-  try {
-    ZaloShare.shareMessage(config);
-  } catch (error) {
-    console.log(error);
-  }
+const shareMessage = async (config: configType) => {
+  await ZaloShare.shareMessage(config)
 }
 
-const shareFeed = (config: configType) => {
-  try {
-    ZaloShare.shareFeed(config);
-  } catch (error) {
-    console.log(error);
-  }
+const shareFeed = async (config: configType) => {
+  await ZaloShare.shareFeed(config)
 }
 
 export default {
