@@ -15,13 +15,13 @@ import com.zing.zalo.zalosdk.oauth.FeedData;
 import com.zing.zalo.zalosdk.oauth.OpenAPIService;
 import com.zing.zalo.zalosdk.oauth.ZaloPluginCallback;
 
-public class RNShareMessageModule extends ReactContextBaseJavaModule  {
+public class ZaloShareModule extends ReactContextBaseJavaModule  {
 
-    private static final String TAG = "RNShareMessage";
+    private static final String TAG = "ZaloShare";
 
     private static final String zaloPackageName = "com.zing.zalo";
 
-    public RNShareMessageModule(ReactApplicationContext reactContext) {
+    public ZaloShareModule(ReactApplicationContext reactContext) {
         super(reactContext);
     }
 

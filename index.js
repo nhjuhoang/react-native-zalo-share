@@ -2,7 +2,7 @@
 
 import { NativeModules, requireNativeComponent, NativeEventEmitter } from 'react-native';
 
-const { RNShareMessage } = NativeModules;
+const { ZaloShare } = NativeModules;
 
 type configType = {
   msg: string,
@@ -14,7 +14,7 @@ type configType = {
 
 const shareMessage = (config: configType) => {
   try {
-    RNShareMessage.shareMessage(config);
+    ZaloShare.shareMessage(config);
   } catch (error) {
     console.log(error);
   }
@@ -22,7 +22,7 @@ const shareMessage = (config: configType) => {
 
 const shareFeed = (config: configType) => {
   try {
-    RNShareMessage.shareFeed(config);
+    ZaloShare.shareFeed(config);
   } catch (error) {
     console.log(error);
   }

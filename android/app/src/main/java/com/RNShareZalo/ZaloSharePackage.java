@@ -9,11 +9,11 @@ import com.facebook.react.uimanager.ViewManager;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RNShareMessagepackage implements ReactPackage {
+public class ZaloSharePackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
         List<NativeModule> modules = new ArrayList<>();
-        modules.add(new RNShareMessageModule(reactContext));
+        modules.add(new ZaloShareModule(reactContext));
         return modules;
     }
 
