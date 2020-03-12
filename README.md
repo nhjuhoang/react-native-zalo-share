@@ -3,6 +3,7 @@
 ## Getting started
 
 `$ npm install react-native-zalo-share --save`
+`$ yarn add react-native-zalo-share`
 
 ### Mostly automatic installation
 
