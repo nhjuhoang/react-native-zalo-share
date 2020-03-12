@@ -25,13 +25,13 @@ const config = {
 const App: () => React$Node = () => {
   const onShareMessage = () => {
     ZaloShare.shareMessage(config)
-      .then(console.log(' 👉🏼 share success'))
+      .then(console.log(' 👉🏼 send data to zalo success'))
       .catch(error => console.log(' 👉🏼 error message', error.message));
   };
 
   const onShareFeed = () => {
     ZaloShare.shareFeed(config)
-      .then(console.log(' 👉🏼 share success'))
+      .then(console.log(' 👉🏼 send data to zalo success'))
       .catch(error => console.log(' 👉🏼 error message', error.message));
   };
 
