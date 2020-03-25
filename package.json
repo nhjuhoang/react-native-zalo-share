@@ -1,7 +1,7 @@
 {
   "name": "react-native-zalo-share",
   "title": "React Native Zalo Share",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "share message, share feed zalo in app",
   "main": "index.js",
   "scripts": {
